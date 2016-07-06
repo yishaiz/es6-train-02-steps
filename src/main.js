@@ -27,10 +27,15 @@ document.getElementById('calcBtn').addEventListener('click', function () {
     let principal = document.getElementById("principal").value;
     let years = document.getElementById("years").value;
     let rate = document.getElementById("rate").value;
-    let monthlyPayment = calculateMonthlyPayment(principal, years, rate);
+
+
+//    let monthlyPayment = calculateMonthlyPayment(principal, years, rate);
+    let {monthlyPayment, monthlyRate} =
+        calculateMonthlyPayment(principal, years, rate);
+
 
     // document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
 
-    document.getElementById("monthlyPayment").innerHTML = monthlyPayment.monthlyPayment.toFixed(2);
+    document.getElementById("monthlyPayment").innerHTML = monthlyPayment;
 });
 

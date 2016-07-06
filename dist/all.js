@@ -27,10 +27,16 @@ document.getElementById('calcBtn').addEventListener('click', function () {
     var principal = document.getElementById("principal").value;
     var years = document.getElementById("years").value;
     var rate = document.getElementById("rate").value;
-    var monthlyPayment = calculateMonthlyPayment(principal, years, rate);
+
+    //    let monthlyPayment = calculateMonthlyPayment(principal, years, rate);
+
+    var _calculateMonthlyPaym = calculateMonthlyPayment(principal, years, rate);
+
+    var monthlyPayment = _calculateMonthlyPaym.monthlyPayment;
+    var monthlyRate = _calculateMonthlyPaym.monthlyRate;
 
     // document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
 
-    document.getElementById("monthlyPayment").innerHTML = monthlyPayment.monthlyPayment.toFixed(2);
+    document.getElementById("monthlyPayment").innerHTML = monthlyPayment;
 });
 //# sourceMappingURL=all.js.map
