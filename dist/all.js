@@ -1,8 +1,11 @@
 'use strict';
 
-//let calculateMonthlyPayment = function(principal, years, rate) {
 var calculateMonthlyPayment = function calculateMonthlyPayment(principal, years, rate) {
     var monthlyRate = 0;
+
+    var name = 'yishai';
+
+    debugger;
 
     if (rate) {
         monthlyRate = rate / 100 / 12;
@@ -40,6 +43,7 @@ var calculateAmortization = function calculateAmortization(principal, years, rat
     return { monthlyPayment: monthlyPayment, monthlyRate: monthlyRate, amortization: amortization };
 };
 
+//document.getElementById('calcBtn').addEventListener('click', function () {
 document.getElementById('calcBtn').addEventListener('click', function () {
     var principal = document.getElementById("principal").value;
     var years = document.getElementById("years").value;
@@ -57,5 +61,13 @@ document.getElementById('calcBtn').addEventListener('click', function () {
     amortization.forEach(function (month) {
         return console.log(month);
     });
+
+    //add template string:
+    var html = "";
+    amortization.forEach(function (year, index) {
+        return html += '\n    <tr>\n        <td>' + (index + 1) + '</td>\n        <td class="currency">' + Math.round(year.principalY) + '</td> \n        <td class="stretch">\n    <div class="flex">\n    <div class="bar principal"\nstyle="flex:' + year.principalY + ';-webkit-flex:' + year.principalY + '">\n    </div>\n    <div class="bar interest"\nstyle="flex:' + year.interestY + ';-webkit-flex:' + year.interestY + '">\n    </div>\n    </div>\n    </td>\n    <td class="currency left">' + Math.round(year.interestY) + '</td>\n    <td class="currency">' + Math.round(year.balance) + '</td>\n    </tr>\n    ';
+    });
+
+    document.getElementById("amortization").innerHTML = html;
 });
 //# sourceMappingURL=all.js.map
