@@ -10,7 +10,7 @@ const paths = {
 
 
 
-gulp.task('default', () => {
+gulp.task('babel', () => {
     return gulp.src(paths.es6)
         .pipe(sourcemaps.init())
         .pipe(babel({

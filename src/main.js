@@ -15,3 +15,5 @@ document.getElementById('calcBtn').addEventListener('click', function () {
     let monthlyPayment = calculateMonthlyPayment(principal, years, rate);
     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
 });
+
+//let x-"test";
