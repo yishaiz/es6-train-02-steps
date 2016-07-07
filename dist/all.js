@@ -3,10 +3,14 @@
 var functions = [];
 
 for (var i = 0; i < 10; i++) {
-    functions.push(function () {
-        console.log(i);
-    });
+
+    (function (i) {
+        functions.push(function () {
+            console.log(i);
+        });
+    })(i);
 }
+
 functions.forEach(function (func) {
     func();
 });
