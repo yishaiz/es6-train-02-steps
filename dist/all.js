@@ -2,12 +2,15 @@
 
 var functions = [];
 
+var _loop = function _loop(i) {
+
+    functions.push(function () {
+        console.log(i);
+    });
+};
+
 for (var i = 0; i < 10; i++) {
-    (function (i) {
-        functions.push(function () {
-            console.log(i);
-        });
-    })(i);
+    _loop(i);
 }
 
 functions.forEach(function (func) {
@@ -15,17 +18,17 @@ functions.forEach(function (func) {
 });
 
 /*
-for (var i = 0; i < 10; i++) {
-    doAsync(function () {
-        console.log("Task # " + i + " completed.");
-    });
-}
+ for (var i = 0; i < 10; i++) {
+ doAsync(function () {
+ console.log("Task # " + i + " completed.");
+ });
+ }
 
-function doAsync(callback) {
-    setTimeout(function () {
-        callback();
-    }, 1500);
-}
+ function doAsync(callback) {
+ setTimeout(function () {
+ callback();
+ }, 1500);
+ }
 
  */
 
