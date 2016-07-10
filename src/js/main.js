@@ -3,7 +3,7 @@ let calculateMonthlyPayment = (principal, years, rate) => {
 
     let name='yishai';
 
-    debugger;
+    // debugger;
 
     if (rate) {
         monthlyRate = rate / 100 / 12;
