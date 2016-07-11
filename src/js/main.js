@@ -1,58 +1,25 @@
-let calculateMonthlyPayment = (principal, years, rate) => {
-    let monthlyRate = 0;
 
-    let name='yishai';
-
-    // debugger;
-
-    if (rate) {
-        monthlyRate = rate / 100 / 12;
-    }
-    let monthlyPayment = principal * monthlyRate /
-        (1 - (Math.pow(1/(1 + monthlyRate), years * 12)));
+// require('./mortgage.js')
 
 
-    return {principal,
-        years,
-        rate,
-        monthlyPayment,
-        monthlyRate
-    }
+import * as mortgage from './mortgage';
+// import ['calculateAmortization'] as mortgage from './mortgage';
 
-};
-
-let calculateAmortization = (principal, years, rate) => {
-    let {monthlyRate, monthlyPayment} = calculateMonthlyPayment(principal, years, rate);
-    let balance = principal;
-    let amortization = [];
-    for (let y=0; y<years; y++) {
-        let interestY = 0;  //Interest payment for year y
-        let principalY = 0; //Principal payment for year y
-        for (let m=0; m<12; m++) {
-            let interestM = balance * monthlyRate;       //Interest payment for month m
-            let principalM = monthlyPayment - interestM; //Principal payment for month m
-            interestY = interestY + interestM;
-            principalY = principalY + principalM;
-            balance = balance - principalM;
-        }
-        amortization.push({principalY, interestY, balance});
-    }
-    return {monthlyPayment, monthlyRate, amortization};
-};
+ console.log (mortgage.otherFnction());
 
 
-
-//document.getElementById('calcBtn').addEventListener('click', function () {
 document.getElementById('calcBtn').addEventListener('click', ()=> {
     let principal = document.getElementById("principal").value;
+
     let years = document.getElementById("years").value;
     let rate = document.getElementById("rate").value;
 
 
-    let {monthlyPayment, monthlyRate, amortization} = calculateAmortization (principal, years, rate);
+// let {monthlyPayment, monthlyRate, amortization} = calculateAmortization (principal, years, rate);
+let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization (principal, years, rate);
 
 
-    document.getElementById("monthlyPayment").innerHTML = monthlyPayment;
+document.getElementById("monthlyPayment").innerHTML = monthlyPayment;
 
 
     amortization.forEach(month => console.log(month));
@@ -80,10 +47,58 @@ style="flex:${year.interestY};-webkit-flex:${year.interestY}">
     </tr>
     `);
 
-document.getElementById("amortization").innerHTML = html;
-
-
+    document.getElementById("amortization").innerHTML = html;
 
 });
 
-var temp='not in use';
+
+
+
+
+
+
+
+/*
+
+ let calculateMonthlyPayment = (principal, years, rate) => {
+ let monthlyRate = 0;
+
+ let name='yishai';
+
+ debugger;
+
+ if (rate) {
+ monthlyRate = rate / 100 / 12;
+ }
+ let monthlyPayment = principal * monthlyRate /
+ (1 - (Math.pow(1/(1 + monthlyRate), years * 12)));
+
+
+ return {principal,
+ years,
+ rate,
+ monthlyPayment,
+ monthlyRate
+ }
+
+ };
+
+ let calculateAmortization = (principal, years, rate) => {
+ let {monthlyRate, monthlyPayment} = calculateMonthlyPayment(principal, years, rate);
+ let balance = principal;
+ let amortization = [];
+ for (let y=0; y<years; y++) {
+ let interestY = 0;  //Interest payment for year y
+ let principalY = 0; //Principal payment for year y
+ for (let m=0; m<12; m++) {
+ let interestM = balance * monthlyRate;       //Interest payment for month m
+ let principalM = monthlyPayment - interestM; //Principal payment for month m
+ interestY = interestY + interestM;
+ principalY = principalY + principalM;
+ balance = balance - principalM;
+ }
+ amortization.push({principalY, interestY, balance});
+ }
+ return {monthlyPayment, monthlyRate, amortization};
+ };
+ */
