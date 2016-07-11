@@ -86,3 +86,4 @@ document.getElementById("amortization").innerHTML = html;
 
 });
 
+var temp='not in use';
