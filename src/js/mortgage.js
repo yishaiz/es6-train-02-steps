@@ -4,6 +4,8 @@ export default class Mortgage {
         this.principal = principal;
         this.years = years;
         this.rate = rate;
+
+       // debugger;
     }
 
     get monthlyPayment() {
