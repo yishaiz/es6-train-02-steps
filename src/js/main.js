@@ -2,21 +2,24 @@
 // require('./mortgage.js')
 
 
-import * as mortgage from './mortgage';
-// import ['calculateAmortization'] as mortgage from './mortgage';
+// import * as mortgage from './mortgage';
+import {calculateAmortization}   from './mortgage';
 
- console.log (mortgage.otherFnction());
+ // console.log (mortgage.otherFnction());
 
 
 document.getElementById('calcBtn').addEventListener('click', ()=> {
     let principal = document.getElementById("principal").value;
+
+
 
     let years = document.getElementById("years").value;
     let rate = document.getElementById("rate").value;
 
 
 // let {monthlyPayment, monthlyRate, amortization} = calculateAmortization (principal, years, rate);
-let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization (principal, years, rate);
+// let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization (principal, years, rate);
+let {monthlyPayment, monthlyRate, amortization} =  calculateAmortization (principal, years, rate);
 
 
 document.getElementById("monthlyPayment").innerHTML = monthlyPayment;
@@ -102,3 +105,19 @@ style="flex:${year.interestY};-webkit-flex:${year.interestY}">
  return {monthlyPayment, monthlyRate, amortization};
  };
  */
+
+var sqrt = Math.sqrt;
+
+function square(x) {
+    return x * x;
+}
+
+function diag(x, y) {
+    return sqrt(square(x) + square(y));
+}
+
+module.exports = {
+    sqrt: sqrt,
+    square: square,
+    diag: diag,
+};

@@ -12,7 +12,6 @@ export let calculateAmortization = (principal, years, rate) => {
 
     debugger;
 
-    
     let {monthlyRate, monthlyPayment} = calculateMonthlyPayment(principal, years, rate);
     let balance = principal;
     let amortization = [];
