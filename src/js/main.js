@@ -11,11 +11,17 @@ class Employee {
 
 }
 
-class Manager extends Employee{
+class Manager {
 
     constructor (firstName, lastName){
-        super (firstName, lastName);
+        this._firstName = firstName;
+        this._lastName = lastName;
+
         this._managedEmployees = [];
+    }
+
+    getFullName(){
+        return `${this._firstName} ${this._lastName}`;
     }
 
     addEmployee(employee){
@@ -33,27 +39,7 @@ getEmployeesNames( ){
      return this._managedEmployees.map( item => item.getFullName() );
  };
 
-// getEmployeesNames3( ){
-//     return this._managedEmployees.map( item => mappedItem );
-// };
-//
-// mappedItem  (item)  {
-//     return item.getFullName()
-// };
 
-// let mappedItem =  (item)=> {
-//     return item.getFullName()
-// };
-
-/*
-
-    getEmployeesNames( ){
-            return this._managedEmployees.map (item) => {
-                return item.getFullName();
-        };
-    }
-
-*/
 }
 
 
